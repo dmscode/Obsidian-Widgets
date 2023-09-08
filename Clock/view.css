@@ -1,0 +1,35 @@
+.DMS-Widget-Clock {
+  font-family: Number;
+  text-align: center;
+}
+.DMS-Widget-Clock,
+.DMS-Widget-Clock-Hours,
+.DMS-Widget-Clock-Minutes,
+.DMS-Widget-Clock-Seconds {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.DMS-Widget-Clock-number,
+.DMS-Widget-Clock-sep {
+  width: .6em;
+  height: 1.2em;
+  line-height: 1.2em;
+}
+.DMS-Widget-Clock-sep {
+  position: relative;
+  width: .4em;
+}
+.DMS-Widget-Clock-sep::before {
+  content: ":";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transition: opacity .6s;
+}
+.DMS-Widget-Clock.even-seconds .DMS-Widget-Clock-sep::before {
+  opacity: 0;
+}
+.clickable { cursor: pointer; }
