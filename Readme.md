@@ -1,6 +1,6 @@
 ---
 created: 2023-09-08 09:41:53
-updated: 2023-09-08 09:56:21
+updated: 2023-09-08 10:18:40
 ---
 
 # Obsidian sidebar widgets.
@@ -21,6 +21,7 @@ Obsidian 的侧边栏小挂件，其实就是用 Dataview 插件写的一些功�
 - 每个组件文件夹中的 Readme.md 文件中都写有详细的使用方法。
 - 注意代码块的语言需设定为：`dataviewjs`（文档中为避免被错误的执行，均写为 js）
 - **必须先插入前置组件 Base**
+- 推荐使用 git clone 此仓库，这样便于日后更新
 
 ## 组件列表
 
