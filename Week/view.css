@@ -1,0 +1,25 @@
+.DMS-Widget-Week {
+  font-family: Number;
+  text-align: center;
+}
+.DMS-Widget-Week-month {
+  font-size: 2em;
+  line-height: 1.4em;
+}
+.DMS-Widget-Week-week-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.DMS-Widget-Week-day {
+  width: 14.3%;
+}
+.DMS-Widget-Week-today {
+  font-weight: bold;
+}
+.DMS-Widget-Week-today > .DMS-Widget-Week-day-name {
+  border-bottom: 2px solid var(--text-normal);
+}
+.DMS-Widget-Week-day-date {
+  font-size: 1.5em;
+}

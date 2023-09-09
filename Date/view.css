@@ -1,0 +1,24 @@
+.DMS-Widget-Date {
+  font-family: Number;
+  position: relative;
+  height: 2.5em;
+  overflow: hidden;
+}
+.DMS-Widget-Date-day {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1em;
+  height: 1em;
+  font-size: 2.4em;
+  font-weight: blod;
+  line-height: 1em;
+  text-align: center;
+}
+.DMS-Widget-Date-month,
+.DMS-Widget-Date-week {
+  width: 5.4em;
+  height: 1.2em;
+  line-height: 1.2em;
+  margin-left: 2.8em;
+}

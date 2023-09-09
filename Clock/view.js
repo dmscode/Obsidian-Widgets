@@ -48,6 +48,10 @@ clockEl.style = `font-size: ${config.fontSize}px`
 
 /* 选择所有数字元素 */
 const numberEls = clockEl.querySelectorAll('.DMS-Widget-Clock-number')
+/**
+ * 更新时间
+ *
+ */
 const changeTime = ()=>{
   const now = new Date()
   const hours = String(now.getHours()).padStart(2, '0')
@@ -65,34 +69,11 @@ const changeTime = ()=>{
 changeTime()
 window.DMSToolsFunc.setInterval(changeTime, 1000, '.DMS-Widget-Clock', dv.container)
 
-/**
- * 复制文本内容
- *
- * @param {string} text 要复制的文本
- * @param {string} [title=""] 用来说明复制内容的标题，暂未启用
- */
-const copyText = (text, title="")=>{
-  navigator.clipboard.writeText(text).then(
-    ()=>new Notice('Copy Succeeded!', 3000),
-    ()=>new Notice('Copy Failed!', 3000)
-  )
-}
 /* 可用于绑定的事件 */
 const copyEvents = {
-  timestamp: ()=>copyText(Date.now(), 'TimeStamp'),
-  time: ()=>{
-    const now = new Date()
-    const hours = String(now.getHours()).padStart(2, '0')
-    const minutes = String(now.getMinutes()).padStart(2, '0')
-    const seconds = String(now.getSeconds()).padStart(2, '0')
-    copyText(`${hours}:${minutes}:${seconds}`, 'Time')
-  },
-  timeNoSeconds: ()=>{
-    const now = new Date()
-    const hours = String(now.getHours()).padStart(2, '0')
-    const minutes = String(now.getMinutes()).padStart(2, '0')
-    copyText(`${hours}:${minutes}`, 'Time')
-  },
+  timestamp:     ()=>window.DMSToolsFunc.copyTimeStr('ts', 'TimeStamp'),
+  time:          ()=>window.DMSToolsFunc.copyTimeStr('hh:mm:ss', 'Time'),
+  timeNoSeconds: ()=>window.DMSToolsFunc.copyTimeStr('hh:mm', 'TimeNoSeconds'),
 }
 
 /* 绑定事件 */

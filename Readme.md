@@ -1,6 +1,6 @@
 ---
 created: 2023-09-08 09:41:53
-updated: 2023-09-08 17:07:08
+updated: 2023-09-09 19:05:48
 ---
 
 # Obsidian sidebar widgets.
@@ -21,9 +21,15 @@ Obsidian 的侧边栏小挂件，其实就是用 Dataview 插件写的一些功�
 - 每个组件文件夹中的 Readme.md 文件中都写有详细的使用方法。
 - 注意代码块的语言需设定为：`dataviewjs`（文档中为避免被错误的执行，均写为 js）
 - **必须先插入前置组件 Base**
-- 每个组件为独立的代码块
 - 推荐使用 git clone 此仓库，这样便于日后更新
+
+## 细节
+
+- 每个组件最好是独立的代码块
+- 推荐关闭 Dataview 设置中的 `Automatic View Refreshing`，此设置旨在自动更新 Dataview 的查询结果，但在实际使用中，随着笔记的编辑，Dataview 的查询结果会不断刷新（闪烁）
 
 ## 组件列表
 
 - [Base](Base/Readme.md) 前置组件，需在所有组件之前插入
+- [Clock](Clock/Readme.md) 数字时钟组件
+- [Date](Date/Readme.md) 日期、月份、星期组件

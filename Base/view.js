@@ -30,6 +30,10 @@ const styleObj = {
     height: 100%;
   }
   `,
+  /* 一些基础工具样式 */
+  Tools: `
+  .clickable { cursor: pointer; }
+  `
 }
 /* 给容器元素添加一个类，便于查找，也便于和其他内容隔离 */
 dv.container.classList.add('DMS-Widgets-Base-container')
@@ -39,24 +43,68 @@ style.innerHTML = input?.length ? input.map(t=>styleObj[t]).join('\n') : Object.
 dv.container.appendChild(style)
 
 /* ==== 工具函数 ==== */
+/**
+ * 设置定时器，可根据条件自销毁，以取代原生定时器方法
+ *
+ * @param {Function} Func 要执行的函数
+ * @param {number} interval 执行间隔
+ * @param {string} elSelector 判断是否需要继续执行的元素选择器
+ * @param {HTMLElement} [rootEl=document] 搜索上述元素的元素范围
+ */
+const setInterval = (Func, interval, elSelector, rootEl=document)=>{
+  const IntervalID = window.setInterval(()=>{
+    /* 如果不存在对应元素，则清除此定时器 */
+    if(!elSelector || !rootEl || !rootEl.querySelector(elSelector)){
+      clearInterval(IntervalID)
+      return
+    }
+    /* 执行对应功能 */
+    Func()
+  }, interval)
+}
+/**
+ * 复制文本内容
+ *
+ * @param {string} text 要复制的文本
+ * @param {string} [title=""] 用来说明复制内容的标题，暂未启用
+ */
+const copyText = (text, title="")=>{
+  navigator.clipboard.writeText(text).then(
+    ()=>new Notice('Copy Succeeded!', 3000),
+    ()=>new Notice('Copy Failed!', 3000)
+  )
+}
+/**
+ * 复制格式化时间
+ *
+ * @param {string} formatStr
+ * @param {string} [title="Format Time"] 用来说明复制内容的标题，暂未启用
+ */
+const copyTimeStr = (formatStr, title='Format Time')=>{
+  const now = new Date()
+  const weekNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  const weekShortNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  copyText(formatStr
+          .replace(/YYYY/g, now.getFullYear())
+          .replace(/YY/g,   now.getFullYear().toString().substring(2))
+          .replace(/MM/g,   String(now.getMonth()+1).padStart(2, "0"))
+          .replace(/M/g,    String(now.getMonth()+1))
+          .replace(/DD/g,   String(now.getDate()).padStart(2, "0"))
+          .replace(/D/g,    String(now.getDate()))
+          .replace(/EEEE/g, weekNames[now.getDay()])
+          .replace(/EE/g,   weekShortNames[now.getDay()])
+          .replace(/hh/g,   String(now.getHours()).padStart(2, "0"))
+          .replace(/h/g,    String(now.getHours()))
+          .replace(/mm/g,   String(now.getMinutes()).padStart(2, "0"))
+          .replace(/m/g,    String(now.getMinutes()))
+          .replace(/sss/g,  String(now.getMilliseconds()).padStart(3, "0"))
+          .replace(/ts/g,   now.getTime())
+          .replace(/ss/g,   String(now.getSeconds()).padStart(2, "0"))
+          .replace(/s/g,    String(now.getSeconds()))
+  , title)
+}
 window.DMSToolsFunc = {
-  /**
-   * 设置定时器，可根据条件自销毁，以取代原生定时器方法
-   *
-   * @param {Function} Func 要执行的函数
-   * @param {number} interval 执行间隔
-   * @param {string} elSelector 判断是否需要继续执行的元素选择器
-   * @param {HTMLElement} [rootEl=document] 搜索上述元素的元素范围
-   */
-  setInterval: (Func, interval, elSelector, rootEl=document)=>{
-    const IntervalID = window.setInterval(()=>{
-      /* 如果不存在对应元素，则清除此定时器 */
-      if(!elSelector || !rootEl.querySelector(elSelector)){
-        clearInterval(IntervalID)
-        return
-      }
-      /* 执行对应功能 */
-      Func()
-    }, interval)
-  }
+  setInterval,
+  copyText,
+  copyTimeStr,
 }

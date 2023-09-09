@@ -32,4 +32,3 @@
 .DMS-Widget-Clock.even-seconds .DMS-Widget-Clock-sep::before {
   opacity: 0;
 }
-.clickable { cursor: pointer; }
