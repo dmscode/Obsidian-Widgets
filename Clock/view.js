@@ -71,9 +71,9 @@ window.DMSToolsFunc.setInterval(changeTime, 1000, '.DMS-Widget-Clock', dv.contai
 
 /* 可用于绑定的事件 */
 const copyEvents = {
-  timestamp:     ()=>window.DMSToolsFunc.copyTimeStr('ts', 'TimeStamp'),
-  time:          ()=>window.DMSToolsFunc.copyTimeStr('hh:mm:ss', 'Time'),
-  timeNoSeconds: ()=>window.DMSToolsFunc.copyTimeStr('hh:mm', 'TimeNoSeconds'),
+  timestamp:     ()=>window.DMSToolsFunc.copyTimeStr('{ts}', 'TimeStamp'),
+  time:          ()=>window.DMSToolsFunc.copyTimeStr('{hh}:{mm}:{ss}', 'Time'),
+  timeNoSeconds: ()=>window.DMSToolsFunc.copyTimeStr('{hh}:{mm}', 'TimeNoSeconds'),
 }
 
 /* 绑定事件 */

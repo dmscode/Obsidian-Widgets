@@ -50,9 +50,9 @@ changeDate()
 
 /* 可用于绑定的事件 */
 const copyEvents = {
-  date: ()=>window.DMSToolsFunc.copyTimeStr('YYYY-MM-DD', 'Date'),
-  dateWithWeek: ()=>window.DMSToolsFunc.copyTimeStr('YYYY-MM-DD EEEE', 'DateWithWeek'),
-  fullTime: ()=>window.DMSToolsFunc.copyTimeStr('YYYY-MM-DD hh:mm:ss', 'FullTime'),
+  date: ()=>window.DMSToolsFunc.copyTimeStr('{YYYY}-{MM}-{DD}', 'Date'),
+  dateWithWeek: ()=>window.DMSToolsFunc.copyTimeStr('{YYYY}-{MM}-{DD} {EEEE}', 'DateWithWeek'),
+  fullTime: ()=>window.DMSToolsFunc.copyTimeStr('{YYYY}-{MM}-{DD} {hh}:{mm}:{ss}', 'FullTime'),
 }
 /* 绑定事件 */
 dateEl.querySelectorAll('*').forEach((n,i)=>{

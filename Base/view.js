@@ -75,36 +75,45 @@ const copyText = (text, title="")=>{
   )
 }
 /**
+ * 时间格式化输出
+ *
+ * @param {string} format 格式化字符串
+ * @param {string|number|Date} [time=Date.now()] 要格式化的时间
+ */
+const formatTime = (formatStr, time=Date.now())=>{
+  const now = new Date(time)
+  const weekNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  const weekShortNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  return formatStr
+  .replace(/\{YYYY\}/g, now.getFullYear())
+  .replace(/\{YY\}/g,   now.getFullYear().toString().substring(2))
+  .replace(/\{MM\}/g,   String(now.getMonth()+1).padStart(2, "0"))
+  .replace(/\{M\}/g,    String(now.getMonth()+1))
+  .replace(/\{DD\}/g,   String(now.getDate()).padStart(2, "0"))
+  .replace(/\{D\}/g,    String(now.getDate()))
+  .replace(/\{EEEE\}/g, weekNames[now.getDay()])
+  .replace(/\{EE\}/g,   weekShortNames[now.getDay()])
+  .replace(/\{hh\}/g,   String(now.getHours()).padStart(2, "0"))
+  .replace(/\{h\}/g,    String(now.getHours()))
+  .replace(/\{mm\}/g,   String(now.getMinutes()).padStart(2, "0"))
+  .replace(/\{m\}/g,    String(now.getMinutes()))
+  .replace(/\{sss\}/g,  String(now.getMilliseconds()).padStart(3, "0"))
+  .replace(/\{ts\}/g,   now.getTime())
+  .replace(/\{ss\}/g,   String(now.getSeconds()).padStart(2, "0"))
+  .replace(/\{s\}/g,    String(now.getSeconds()))
+}
+/**
  * 复制格式化时间
  *
  * @param {string} formatStr
  * @param {string} [title="Format Time"] 用来说明复制内容的标题，暂未启用
  */
 const copyTimeStr = (formatStr, title='Format Time')=>{
-  const now = new Date()
-  const weekNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-  const weekShortNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-  copyText(formatStr
-          .replace(/YYYY/g, now.getFullYear())
-          .replace(/YY/g,   now.getFullYear().toString().substring(2))
-          .replace(/MM/g,   String(now.getMonth()+1).padStart(2, "0"))
-          .replace(/M/g,    String(now.getMonth()+1))
-          .replace(/DD/g,   String(now.getDate()).padStart(2, "0"))
-          .replace(/D/g,    String(now.getDate()))
-          .replace(/EEEE/g, weekNames[now.getDay()])
-          .replace(/EE/g,   weekShortNames[now.getDay()])
-          .replace(/hh/g,   String(now.getHours()).padStart(2, "0"))
-          .replace(/h/g,    String(now.getHours()))
-          .replace(/mm/g,   String(now.getMinutes()).padStart(2, "0"))
-          .replace(/m/g,    String(now.getMinutes()))
-          .replace(/sss/g,  String(now.getMilliseconds()).padStart(3, "0"))
-          .replace(/ts/g,   now.getTime())
-          .replace(/ss/g,   String(now.getSeconds()).padStart(2, "0"))
-          .replace(/s/g,    String(now.getSeconds()))
-  , title)
+  copyText(formatTime(formatStr), title)
 }
 window.DMSToolsFunc = {
   setInterval,
   copyText,
   copyTimeStr,
+  formatTime,
 }

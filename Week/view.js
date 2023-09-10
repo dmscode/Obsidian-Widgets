@@ -2,6 +2,7 @@ dv.container.classList.add('DMS-Widget-Week-container')
 /* 用户传入的设定与默认设定合并 */
 const config = Object.assign({
   fontSize: dv.container.innerWidth/14,
+  link: 'Daily/{YYYY}-{MM}-{DD}.md'
 }, input)
 /* 日期元素 */
 const weekEl = document.createElement('div')
@@ -42,7 +43,10 @@ const changeWeek = ()=>{
     if(i===3) thisDayEl.classList.add('DMS-Widget-Week-today')
     thisDayEl.innerHTML = `
       <div class="DMS-Widget-Week-day-name" data-value="${week}">${weekName}</div>
-      <div class="DMS-Widget-Week-day-date">${date}</div>
+      <div class="DMS-Widget-Week-day-date">${
+        config.link
+        ? `<a class="internal-link" data-href="${window.DMSToolsFunc.formatTime(config.link)}" href="${window.DMSToolsFunc.formatTime(config.link)}" target="_blank" rel="noopener">${date}</a>`
+        : date}</div>
     `
     weekContainerEl.appendChild(thisDayEl)
   }
