@@ -1,7 +1,7 @@
 dv.container.classList.add('DMS-Widget-Date-container')
 /* 用户传入的设定与默认设定合并 */
 const config = Object.assign({
-  fontSize: dv.container.innerWidth/8.4,
+  fontSize: dv.container.innerWidth/9,
   copy: ['date', 'fullTime', 'dateWithWeek']
 }, input)
 /* 日期元素 */

@@ -1,0 +1,31 @@
+.DMS-Widget-Progress {
+  font-family: Number;
+}
+.DMS-Widget-Progress > div {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+.DMS-Widget-Progress-name {
+  width: 4em;
+  flex-grow: 0;
+  font-size: .8em;
+}
+.DMS-Widget-Progress-content {
+  flex-grow: 1;
+  height: .8em;
+  border: 1px solid var(--text-normal);
+  border-radius: .4em;
+  overflow: hidden;
+}
+.DMS-Widget-Progress-bar {
+  height: 100%;
+  background-color: var(--text-normal);
+  opacity: .6;
+}
+.DMS-Widget-Progress-value {
+  width: 4em;
+  flex-grow: 0;
+  font-size: .8em;
+  text-align: right;
+}

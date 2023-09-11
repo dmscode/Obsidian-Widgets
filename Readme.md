@@ -1,6 +1,6 @@
 ---
 created: 2023-09-08 09:41:53
-updated: 2023-09-10 15:40:13
+updated: 2023-09-11 11:20:32
 ---
 
 # Obsidian sidebar widgets.
@@ -34,3 +34,4 @@ Obsidian 的侧边栏小挂件，其实就是用 Dataview 插件写的一些功�
 - [Clock](Clock/Readme.md) 数字时钟组件
 - [Date](Date/Readme.md) 日期、月份、星期组件
 - [Week](Week/Readme.md) 星期组件
+- [Progress](Progress/Readme.md) 时光进度组件
